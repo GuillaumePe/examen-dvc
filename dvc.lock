@@ -18,3 +18,21 @@ stages:
       md5: 98c1f08a2d07a6439970a35ac967be92.dir
       size: 294499
       nfiles: 4
+  preprocessing2:
+    cmd: python src/data/2_Standardization.py
+    deps:
+    - path: data/processed_data
+      hash: md5
+      md5: 98c1f08a2d07a6439970a35ac967be92.dir
+      size: 294499
+      nfiles: 4
+    - path: src/data/2_Standardization.py
+      hash: md5
+      md5: c5036535eeeeac31b4bdec50527bc26a
+      size: 1180
+    outs:
+    - path: data/standardization
+      hash: md5
+      md5: 66e6f10e7d6e14c0518fdc131b17e32d.dir
+      size: 284523
+      nfiles: 2

@@ -6,3 +6,10 @@ stages:
     - src/data/1_Datasplit.py
     outs:
     - data/processed_data
+  preprocessing2:
+    cmd: python src/data/2_Standardization.py
+    deps:
+    - data/processed_data
+    - src/data/2_Standardization.py
+    outs:
+    - data/standardization

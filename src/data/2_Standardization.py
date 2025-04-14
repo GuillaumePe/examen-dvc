@@ -5,17 +5,27 @@ from pathlib import Path
 
 project_dir = Path(__file__).resolve().parents[2]
 
-def save_dataframes(X_train_scaled, X_test_scaled, output_folderpath):
-    # Save dataframes to their respective output file paths
-    for file, filename in zip([X_train_scaled, X_test_scaled], ['X_train_scaled', 'X_test_scaled']):
+def save_dataframes(X_train, X_test, output_folderpath):
+    check_existing_folder(output_folderpath)
+    for file, filename in zip([X_train, X_test], ['X_train', 'X_test']):
         output_filepath = os.path.join(output_folderpath, f'{filename}.csv')
         file.to_csv(output_filepath, index=False)
 
-scaler = StandardScaler()
+    
+def check_existing_folder(folder_path):
+    '''Check if a folder already exists. If it doesn't, create it.'''
+    if os.path.exists(folder_path) == False :
+        os.makedirs(folder_path)
 
-scaled_data_dict = {}
-for filename in ['X_train', 'X_test']:
-    data = pd.read_csv(os.path.join(project_dir,"/data/processed", f'{filename}.csv'))
-    data_scaled = scaler.ft_transform(data)
-    scaled_data_dict[filename] = data_scaled
-save_dataframes(scaled_data_dict['X_train'], scaled_data_dict['X_test'], os.path.join(project_dir,"/data/processed"))
+X_train = pd.read_csv(os.path.join(project_dir, "data/processed_data", 'X_train.csv'))
+X_test = pd.read_csv(os.path.join(project_dir, "data/processed_data", 'X_test.csv'))
+
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+
+X_train_scaled = pd.DataFrame(X_train_scaled, columns=X_train.columns)
+X_test_scaled = pd.DataFrame(X_test_scaled, columns=X_test.columns)
+
+save_dataframes(X_train_scaled, X_test_scaled, os.path.join(project_dir, "data/standardization"))
