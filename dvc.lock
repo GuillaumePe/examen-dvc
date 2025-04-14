@@ -58,3 +58,29 @@ stages:
       hash: md5
       md5: 568489f0cfdfe5d4218592477e4e67e5
       size: 90
+  Entrainement:
+    cmd: python src/models/4_Entrainement_modele.py
+    deps:
+    - path: data/processed_data
+      hash: md5
+      md5: 98c1f08a2d07a6439970a35ac967be92.dir
+      size: 294499
+      nfiles: 4
+    - path: data/standardization
+      hash: md5
+      md5: 66e6f10e7d6e14c0518fdc131b17e32d.dir
+      size: 284523
+      nfiles: 2
+    - path: models/gradient_boosting_best_params.pkl
+      hash: md5
+      md5: 568489f0cfdfe5d4218592477e4e67e5
+      size: 90
+    - path: src/models/4_Entrainement_modele.py
+      hash: md5
+      md5: 5a5ac45ed35fe500f060009f79de0b65
+      size: 652
+    outs:
+    - path: models/gradient_boosting_best_model.pkl
+      hash: md5
+      md5: 95b46ace2b3e6189a4af6a207cd1d41f
+      size: 385644

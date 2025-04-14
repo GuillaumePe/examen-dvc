@@ -21,3 +21,12 @@ stages:
     - src/models/3_Gridsearch.py
     outs:
     - models/gradient_boosting_best_params.pkl
+  Entrainement:
+    cmd: python src/models/4_Entrainement_modele.py
+    deps:
+    - data/processed_data
+    - data/standardization
+    - models/gradient_boosting_best_params.pkl
+    - src/models/4_Entrainement_modele.py
+    outs:
+    - models/gradient_boosting_best_model.pkl
