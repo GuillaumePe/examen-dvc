@@ -84,3 +84,33 @@ stages:
       hash: md5
       md5: 95b46ace2b3e6189a4af6a207cd1d41f
       size: 385644
+  Evaluation:
+    cmd: python src/models/5_Evaluation_modele.py
+    deps:
+    - path: data/processed_data
+      hash: md5
+      md5: 98c1f08a2d07a6439970a35ac967be92.dir
+      size: 294499
+      nfiles: 4
+    - path: data/standardization
+      hash: md5
+      md5: 66e6f10e7d6e14c0518fdc131b17e32d.dir
+      size: 284523
+      nfiles: 2
+    - path: models/gradient_boosting_best_model.pkl
+      hash: md5
+      md5: 95b46ace2b3e6189a4af6a207cd1d41f
+      size: 385644
+    - path: src/models/5_Evaluation_modele.py
+      hash: md5
+      md5: 7340ec9d521593433f8f722619ec177d
+      size: 1030
+    outs:
+    - path: data/Predictions.csv
+      hash: md5
+      md5: ec2c1f221339a3761885642de7d133ea
+      size: 6796
+    - path: metrics/scores.json
+      hash: md5
+      md5: cdf285ad61e16b1a5192b8ba12f532b7
+      size: 69

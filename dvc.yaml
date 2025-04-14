@@ -30,3 +30,13 @@ stages:
     - src/models/4_Entrainement_modele.py
     outs:
     - models/gradient_boosting_best_model.pkl
+  Evaluation:
+    cmd: python src/models/5_Evaluation_modele.py
+    deps:
+    - data/processed_data
+    - data/standardization
+    - models/gradient_boosting_best_model.pkl
+    - src/models/5_Evaluation_modele.py
+    outs:
+    - data/Predictions.csv
+    - metrics/scores.json
