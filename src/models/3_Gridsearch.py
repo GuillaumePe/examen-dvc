@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.model_selection import GridSearchCV
 import os
@@ -7,8 +8,10 @@ import joblib
 
 project_dir = Path(__file__).resolve().parents[2]
 
-X_train = pd.read_csv(os.path.join(project_dir,"/data/processed/X_train.csv"))
-Y_train = pd.read_csv(os.path.join(project_dir,"/data/processed/y_train.csv"))
+X_train = pd.read_csv(os.path.join(project_dir,"data/standardization/X_train.csv"))
+Y_train = pd.read_csv(os.path.join(project_dir,"data/processed_data/y_train.csv"))
+
+Y_train = np.ravel(Y_train)
 
 
 model = GradientBoostingRegressor()

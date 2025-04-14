@@ -13,3 +13,11 @@ stages:
     - src/data/2_Standardization.py
     outs:
     - data/standardization
+  Gridsearch:
+    cmd: python src/models/3_Gridsearch.py
+    deps:
+    - data/processed_data
+    - data/standardization
+    - src/models/3_Gridsearch.py
+    outs:
+    - models/gradient_boosting_best_params.pkl
