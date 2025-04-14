@@ -39,4 +39,6 @@ stages:
     - src/models/5_Evaluation_modele.py
     outs:
     - data/Predictions.csv
-    - metrics/scores.json
+    metrics:
+    - metrics/scores.json:
+        cache: false
